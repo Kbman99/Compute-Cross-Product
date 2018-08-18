@@ -1,0 +1,52 @@
+{
+  "name": "computercrossproduct",
+  "version": "1.0.0",
+  "description": "A web application to compute the cross product of two vectors",
+  "main": "index.js",
+  "scripts": {
+    "start-docker": "webpack-dev-server --hot --inline --env.API_HOST=$API_HOST --config webpack.config.js",
+    "start": "webpack-dev-server --hot --inline --config webpack.config.js",
+    "start:docker": "node_modules/.bin/webpack-dev-server --host 0.0.0.0",
+    "build": "webpack -p --progress --config webpack.config.js",
+    "dev-build": "webpack --progress -d --config webpack.dev.js",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "watch": "webpack --progress -d --config webpack.config.js --watch"
+  },
+  "babel": {
+    "presets": [
+      "latest",
+      "react",
+      "env",
+      "stage-2"
+    ]
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "babel-core": "^6.26.3",
+    "babel-loader": "^7.1.5",
+    "babel-preset-env": "^1.7.0",
+    "babel-preset-latest": "^6.24.1",
+    "babel-preset-react": "^6.24.1",
+    "babel-preset-stage-2": "^6.24.1",
+    "css-loader": "^1.0.0",
+    "react": "^16.4.2",
+    "react-dom": "^16.4.2",
+    "style-loader": "^0.22.1",
+    "webpack": "^4.16.5",
+    "webpack-cli": "^3.1.0",
+    "webpack-command": "^0.4.1",
+    "webpack-dev-server": "^3.1.5"
+  },
+  "dependencies": {
+    "availity-reactstrap-validation": "^2.0.6",
+    "axios": "^0.18.0",
+    "bootstrap": "^4.1.3",
+    "jquery": "^3.3.1",
+    "lodash": "^4.17.10",
+    "popper": "^1.0.1",
+    "react-bootstrap": "^0.32.1",
+    "react-router": "^4.3.1",
+    "reactstrap": "^6.3.1"
+  }
+}

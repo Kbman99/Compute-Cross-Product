@@ -1,0 +1,13 @@
+*.log
+*.pyc
+*.pyo
+*.pyd
+.git
+.pylintrc
+nginx
+.gitignore
+__pycache__
+node_modules/
+app/app.db
+*.db
+*/*.db

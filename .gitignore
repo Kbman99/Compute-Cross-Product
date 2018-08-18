@@ -1,0 +1,9 @@
+*.db
+*.log
+*.pyc
+config.py
+.idea/
+.pytest_cache/
+.pylintrc
+node_modules
+nginx/

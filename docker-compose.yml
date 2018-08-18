@@ -1,0 +1,31 @@
+version: "3"
+services:
+  web:
+    image: flask
+    restart: always
+    build: ./
+    environment:
+      - FLASK_APP=manage.py
+      - FLASK_DEBUG=1
+    ports:
+      - "5000:5000"
+
+  client:
+    image: webpack
+    build:
+      context: ./client
+    ports:
+      - "8080:8080"
+    environment:
+      # Modify API_HOST variable to the IP of the container running the Flask application.
+      # Port can remain the same
+      - API_HOST=192.168.99.101
+      - API_PORT=5000
+
+#  nginx:
+#    restart: always
+#    build: ./nginx/
+#    ports:
+#      - "80:80"
+#    links:
+#      - web:web
