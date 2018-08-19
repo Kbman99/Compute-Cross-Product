@@ -1,10 +1,17 @@
 ﻿# Compute Cross Product SPA
 
-This application uses a React SPA front-end served by webpack-dev-server. The back-end is powered by Flask and sqlite3.
+##### This application uses a React SPA front-end served by webpack-dev-server. The back-end is powered by Flask and sqlite3.
 
-## Setup
+![](app/static/img/Technologies.png)
+
+# Directions
+###*For Docker CE both applications run on and can be accessed at `0.0.0.0:<port>`, if using Docker-Machine, they will run on the IP provided when running `docker-machine ip <machine_name>`*
 ###*The backend Flask API runs on port `5000` while the front-end webpack-dev-server runs on port `8080`*
-####*Please update the `docker-compose.yml` file with the proper value for the `API_HOST` env variable set under the `client` service. This should be the IP of the Flask backend application*
+
+## *For Docker-Machine*
+####*Please update the `docker-compose.yml` file with the proper value for the `API_HOST` env variable set under the `client` service. This should be the IP of the Flask backend application. Read above for specific IP information*
+####*P.S. This value defaults is pre-set to `0.0.0.0` so it works out of the box with Docker CE*
+# Setup
 
 ##Simple Startup (locally)
  
@@ -57,12 +64,12 @@ eval "$(docker-machine env <machine_name>)"
 ```
 *Start here if you <b>DO NOT</b> use `docker-machine`*
 ```sh
-docker-compose build
-docker-compose up
+$ sudo docker-compose build
+$ sudo docker-compose up
 ```
 
-###If using `docker-machine` you must then access the IP address given by `docker-machine ip <machine_name>` directly from your machine along with the appropriate port to access the services.
-
+###If using `docker-machine` you must then access the IP address given by `docker-machine ip <machine_name>` directly from your machine along with the appropriate port to access a given service.
+4
 ## License
 
 The MIT License (MIT). Please see the [license file](LICENSE) for more information.
