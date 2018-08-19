@@ -1,6 +1,5 @@
 *.db
 *.log
-*.py
 .idea/
 .pytest_cache/
 .pylintrc
