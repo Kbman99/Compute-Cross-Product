@@ -1,5 +1,7 @@
 from app.core import ma
 from marshmallow import validate, fields, ValidationError
+from app.models import ResultList
+import simplejson
 
 
 length_of = validate.Length(equal=3, error='Field must be of length 3.')
@@ -19,18 +21,25 @@ class StrictNumber(fields.Integer):
 class ValidateSchema(ma.Schema):
     """ Validates against all incoming POST requests """
     class Meta:
-       fields = ('vector1', 'vector2')
+        fields = ('vector1', 'vector2')
     vector1 = ma.List(StrictNumber(), required=True, validate=length_of)
     vector2 = ma.List(StrictNumber(), required=True, validate=length_of)
 
 
-class ResultListSchema(ma.Schema):
+class ResultListSchema(ma.ModelSchema):
+    class Meta:
+        model = ResultList
+        json_module = simplejson
     """ Used to dump result objects into a response """
     id = ma.Integer()
-    vector1 = ma.List(StrictNumber(), required=True, validate=length_of)
-    vector2 = ma.List(StrictNumber(), required=True, validate=length_of)
-    result = ma.List(StrictNumber(), required=True, validate=length_of)
+    vector1 = ma.List(fields.Decimal(), required=True, validate=length_of)
+    vector2 = ma.List(fields.Decimal(), required=True, validate=length_of)
+    result = ma.List(fields.Decimal(), required=True, validate=length_of)
     created = ma.DateTime()
+
+
+class AllResultListDecimalSchema(ma.Schema):
+    results = ma.Nested('ResultListSchema', many=True)
 
 
 class AllResultsListSchema(ma.Schema):

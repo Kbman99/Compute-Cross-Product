@@ -1,7 +1,7 @@
 from flask import render_template, Blueprint, jsonify, request
 from flask_cors import CORS
 
-from app.models import Result
+from app.models import Result, ResultList
 from app.core import db
 import app.schemas as s
 from app.toolbox import vectors as v
@@ -17,7 +17,7 @@ def catch_all(path):
     return render_template('error.html', message='404 not found')
 
 
-@api.route('/calculate', methods=['POST', 'GET'])
+@api.route('/testit', methods=['POST', 'GET'])
 def testit():
     if request.method == 'POST':
         req_data = request.get_json()
@@ -51,6 +51,32 @@ def testit():
         return jsonify(dump)
 
 
-@api.route('/health')
+@api.route('/health', methods=['GET'])
 def health():
     return jsonify({'message': 'okay'})
+
+
+@api.route('/calculate', methods=['POST', 'GET'])
+def calculate():
+    if request.method == 'POST':
+        req_data = request.get_json()
+        data, error = s.ValidateSchema().load(req_data)
+        if error:
+            return jsonify(error), 400
+        result = ResultList(req_data['vector1'], req_data['vector2'])
+        db.session.add(result)
+        try:
+            db.session.commit()
+        except Exception as e:
+            return jsonify({'error': e}), 500
+        final_result, errors = s.ResultListSchema().dump(result)
+        if errors:
+            return jsonify(errors)
+        return jsonify(final_result)
+    else:
+        results = ResultList.query.all()
+        results_obj = v.AllVectors(results)
+        dump, errors = s.AllResultsListSchema().dump(results_obj)
+        if errors:
+            return jsonify(errors)
+        return jsonify(dump)

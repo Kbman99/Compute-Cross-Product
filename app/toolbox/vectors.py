@@ -11,5 +11,5 @@ class Vectors:
 
 
 class AllVectors:
-    def __init__(self):
-        self.results = []
+    def __init__(self, vectors=()):
+        self.results = vectors

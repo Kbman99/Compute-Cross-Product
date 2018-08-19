@@ -18,7 +18,7 @@ RUN pipenv install --python 3.6 --system --deploy
 COPY tests/ app/ .env manage.py /app/
 
 # Initialize Sqlite3 database
-RUN flask initdb
+#RUN flask initdb
 
 # Listen to port 5000 at runtime
 EXPOSE 5000
