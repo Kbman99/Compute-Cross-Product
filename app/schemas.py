@@ -37,14 +37,3 @@ class AllResultsListSchema(ma.Schema):
     """ Used to dump a list of result objects into a response """
     results = ma.Nested('ResultListSchema', many=True)
 
-
-class ResultSchema(ma.Schema):
-    id = ma.Integer()
-    vector1 = ma.Nested('self', only='val', many=True)
-    vector2 = ma.Nested('self', only='val', many=True)
-    result = ma.Nested('self', only='val', many=True)
-    created = ma.DateTime()
-
-
-class AllResultsSchema(ma.Schema):
-    results = ma.Nested('ResultSchema', many=True)

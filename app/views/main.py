@@ -51,48 +51,6 @@ def testit():
         return jsonify(dump)
 
 
-# @api.route('/calculate', methods=['POST', 'GET'])
-# def calculate():
-#     if request.method == 'POST':
-#         print(request.get_json())
-#         data = request.get_json()
-#         try:
-#
-#             vector_data = v.Vectors1(data['vector1'], data['vector2'])
-#             result = Result(v1=[v1.val for v1 in vector_data.vector1], v2=[v2.val for v2 in vector_data.vector2],
-#                             cp=[cp.val for cp in vector_data.result])
-#         except (ValueError, IndexError):
-#             return ge.make_error(400, 'Invalid vector size in request. Both vectors must be of length 3.')
-#         except TypeError:
-#             return ge.make_error(400, 'Invalid argument types. Ensure you include only floats or integers')
-#         vector_data.created = result.created
-#         db.session.add(result)
-#         try:
-#             db.session.commit()
-#             vector_data.id = result.id
-#         except Exception as e:
-#             print(e)
-#         data, errors = s.ResultSchema().dump(vector_data)
-#         print(errors)
-#         return jsonify(data) if not errors else jsonify(errors)
-#     else:
-#         results = Result.query.all()
-#         all_results = v.AllVectors()
-#         for result in results:
-#             vector = v.Vectors1([result.vector_one_x, result.vector_one_y, result.vector_one_z],
-#                                 [result.vector_two_x, result.vector_two_y, result.vector_two_z],
-#                                 [result.cross_product_x, result.cross_product_y, result.cross_product_z])
-#             vector.created = result.created
-#             vector.id = result.id
-#             all_results.results.append(vector)
-#         return jsonify(s.AllResultsSchema().dump(all_results).data)
-
-
 @api.route('/health')
 def health():
     return jsonify({'message': 'okay'})
-
-
-@api.route('/test')
-def test():
-    return jsonify()
