@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start-docker": "webpack-dev-server --hot --inline --env.API_HOST=$API_HOST --config webpack.config.js",
+    "start-local": "webpack-dev-server --hot --inline --env.API_HOST=127.0.0.1 --config webpack.config.js",
     "start": "webpack-dev-server --hot --inline --config webpack.config.js",
     "start:docker": "node_modules/.bin/webpack-dev-server --host 0.0.0.0",
     "build": "webpack -p --progress --config webpack.config.js",
