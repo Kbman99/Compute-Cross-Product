@@ -1,9 +1,9 @@
 *.db
 *.log
-*.pyc
-config.py
+*.py
 .idea/
 .pytest_cache/
 .pylintrc
 node_modules
 nginx/
+__pycache__
