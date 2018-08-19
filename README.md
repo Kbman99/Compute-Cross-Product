@@ -45,7 +45,7 @@
     
     `npm install`
     
-- Run the webpack-dev-server locally (*This runs the server on `127.0.0.1:8080`, but will show as `0.0.0.0:8080`*)
+- Run the webpack-dev-server locally (*This runs the server on `127.0.0.1:8080`, but will show as `0.0.0.0:8080` on Windows (on Linux it may very well run on `0.0.0.0:8080`)*)
 
     `npm run start-local`
 
