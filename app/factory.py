@@ -1,7 +1,8 @@
 from flask import Flask
 
-from .core import db, debug_toolbar, ma
-from .helpers import register_blueprints
+from app.core import db, debug_toolbar, ma
+from app.helpers import register_blueprints
+
 from app import config
 from app import filters
 

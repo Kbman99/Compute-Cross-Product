@@ -1,7 +1,7 @@
-from .core import db
 from sqlalchemy.dialects.postgresql import ARRAY
-
 import datetime
+
+from app.core import db
 
 
 class ResultList(db.Model):

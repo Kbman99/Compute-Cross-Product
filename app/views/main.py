@@ -14,7 +14,7 @@ CORS(api)
 @api.route('/', defaults={'path': ''})
 @api.route('/<path:path>')
 def catch_all(path):
-    return render_template('error.html', message='404 not found')
+    return render_template('error.html', message='404 not found'), 404
 
 
 @api.route('/calculate', methods=['POST', 'GET'])
@@ -29,6 +29,7 @@ def calculate():
         try:
             db.session.commit()
         except Exception as e:
+            # this shouldn't happen
             return jsonify({'error': e}), 500
         final_result, errors = ResultListSchema().dump(result)
         if errors:

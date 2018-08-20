@@ -1,6 +1,5 @@
 import importlib
 import pkgutil
-
 import os
 from flask import Blueprint
 

@@ -1,7 +1,8 @@
-from app.core import ma
-from marshmallow import validate, fields, ValidationError
-from app.models import ResultList
 import simplejson
+from marshmallow import validate, fields, ValidationError
+
+from app.models import ResultList
+from app.core import ma
 
 
 length_of = validate.Length(equal=3, error='Field must be of length 3.')
