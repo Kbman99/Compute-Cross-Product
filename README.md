@@ -69,9 +69,8 @@ eval "$(docker-machine env <machine_name>)"
 ```
 *Start here if you <b>DO NOT</b> use `docker-machine`*
 ```sh
-$ sudo docker-compose build
-$ sudo docker-compose up -d
-$ sudo docker-compose run --rm web flask initdb (Only required on first startup of container)
+docker-compose up -d
+docker-compose run --rm web flask initdb (Only required on first startup of container)
 ```
 
 #### If using `docker-machine` you must then access the IP address given by `docker-machine ip <machine_name>` directly from your machine along with the appropriate port to access a given service.
