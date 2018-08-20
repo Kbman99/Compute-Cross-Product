@@ -18,7 +18,7 @@ class StrictNumber(fields.Integer):
         return value
 
 
-class ValidateSchema(ma.Schema):
+class ValidationSchema(ma.Schema):
     """ Validates against all incoming POST requests """
     class Meta:
         fields = ('vector1', 'vector2')
@@ -27,10 +27,10 @@ class ValidateSchema(ma.Schema):
 
 
 class ResultListSchema(ma.ModelSchema):
+    """ Used to dump result objects into a response """
     class Meta:
         model = ResultList
         json_module = simplejson
-    """ Used to dump result objects into a response """
     id = ma.Integer()
     vector1 = ma.List(fields.Decimal(), required=True, validate=length_of)
     vector2 = ma.List(fields.Decimal(), required=True, validate=length_of)
@@ -38,11 +38,6 @@ class ResultListSchema(ma.ModelSchema):
     created = ma.DateTime()
 
 
-class AllResultListDecimalSchema(ma.Schema):
-    results = ma.Nested('ResultListSchema', many=True)
-
-
 class AllResultsListSchema(ma.Schema):
     """ Used to dump a list of result objects into a response """
     results = ma.Nested('ResultListSchema', many=True)
-

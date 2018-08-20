@@ -9,7 +9,7 @@
 ### *The backend Flask API runs on port `5000` while the front-end webpack-dev-server runs on port `8080`*
 
 ## *For Docker-Machine*
-#### *Please update the `docker-compose.yml` file with the proper value for the `API_HOST` env variable set under the `client` service. This should be the IP of the Flask backend application. Read above for specific IP information*
+#### *Please update the `.env` file with the proper value for the `API_HOST` env variable set under the `client` service. This should be the IP of the Flask backend application. Read above for specific IP information*
 #### *P.S. This value defaults is pre-set to `0.0.0.0` so it works out of the box with Docker CE*
 # Setup
 
@@ -61,11 +61,13 @@ cd ~/path/to/application/
 docker-machine create -d virtualbox --virtualbox-memory 1024 --virtualbox-cpu-count 1 <machine_name>
 docker-machine env <machine_name>
 eval "$(docker-machine env <machine_name>)"
+...
 ```
 *Start here if you <b>DO NOT</b> use `docker-machine`*
 ```sh
 $ sudo docker-compose build
-$ sudo docker-compose up
+$ sudo docker-compose up -d
+$ sudo docker-compose run --rm web flask initdb
 ```
 
 ### If using `docker-machine` you must then access the IP address given by `docker-machine ip <machine_name>` directly from your machine along with the appropriate port to access a given service.

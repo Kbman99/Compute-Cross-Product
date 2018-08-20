@@ -12,7 +12,7 @@ export default class CalculateForm extends React.Component {
     this.state = {
       vector1: false,
       vector2: false,
-      result: false
+      result: 'Result will appear here'
     }
   }
 
