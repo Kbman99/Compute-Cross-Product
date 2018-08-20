@@ -35,12 +35,16 @@ def calculate():
             # this shouldn't happen
             return jsonify({'error': e}), 500
         final_result, errors_results = ResultListSchema().dump(result)
-        return jsonify(final_result) if not errors_results else jsonify(errors_results), 400
+        if errors_results:
+            jsonify(errors_results), 400
+        return jsonify(final_result)
     else:
         results = ResultList.query.all()
         results_obj = AllResults(results)
-        all_results, errors = AllResultsListSchema().dump(results_obj)
-        return jsonify(all_results) if not errors else jsonify(errors), 400
+        all_results, errors_all_results = AllResultsListSchema().dump(results_obj)
+        if errors_all_results:
+            jsonify(errors_all_results), 400
+        return jsonify(all_results)
 
 
 @api.route('/health', methods=['GET'])
