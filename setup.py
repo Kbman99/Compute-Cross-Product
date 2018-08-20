@@ -1,9 +1,9 @@
 from setuptools import find_packages, setup
 
 setup(
-    name='Flask-Startup',
+    name='Compute Cross Product',
     version='0.0.2',
-    description='Easy to use Flask boilerplate',
+    description='Easy to use Cross Product Computer!',
     long_description='',
     license='MIT',
     author='Kbman99',

@@ -35,5 +35,4 @@ def refreshdb():
 
 
 if __name__ == '__main__':
-    initdb()
     app.cli(host='0.0.0.0')

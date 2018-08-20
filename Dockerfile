@@ -16,7 +16,7 @@ RUN set -ex
 RUN pipenv install --python 3.6 --system --deploy
 
 # Copy over main files
-COPY tests/ app/ .env manage.py /app/
+COPY setup.cfg setup.py tests/ app/ .env manage.py /app/
 
 # Listen to port 5000 at runtime
 EXPOSE 5000

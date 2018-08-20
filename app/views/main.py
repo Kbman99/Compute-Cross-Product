@@ -1,6 +1,4 @@
-from sqlalchemy_utils.functions import database_exists
-
-from flask import render_template, Blueprint, jsonify, request, current_app
+from flask import render_template, Blueprint, jsonify, request
 from flask_cors import CORS
 
 
