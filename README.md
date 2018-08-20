@@ -15,16 +15,20 @@
 
 ##Simple Startup (locally)
  
+### PostgreSQL
+- Run this script using `psql` CLI to setup the database
+```sh
+$ psql
+# create database results;
+CREATE DATABASE
+# \q
+```
 ### Flask
 - Install pipenv and related package requirements.
 
 	`pip install pipenv`
 	
 	`pipenv install --python 3.6`
-	
-- Set Flask entry point in environment variables
-
-    `export FLASK=manage.py`
 
 - Create the database.
 
