@@ -26,7 +26,7 @@ def dropdb():
 
 @app.cli.command()
 @click.confirmation_option(
-    prompt='This will remove the current database and fill it with test data. Do you want to continue?')
+    prompt='This will remove the current database and reinitialize it. Do you want to continue?')
 def refreshdb():
     """ Drop then reinitialize the database """
     db.drop_all()
