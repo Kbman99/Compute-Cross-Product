@@ -1,9 +1,10 @@
 *.db
 *.log
 *.pyc
-.idea/
-.pytest_cache/
+.idea
+.pytest_cache
 .pylintrc
 node_modules
-nginx/
+nginx
 __pycache__
+postgres-data

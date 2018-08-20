@@ -11,7 +11,7 @@ class ResultList(db.Model):
         self.created = datetime.datetime.now()
         self.result = self.calc_result()
 
-    __tablename__ = 'cross_product'
+    __tablename__ = 'cross_product_result'
 
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     vector1 = db.Column(ARRAY(db.Numeric))

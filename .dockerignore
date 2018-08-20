@@ -11,3 +11,4 @@ node_modules/
 app/app.db
 *.db
 */*.db
+migrations/

@@ -1,6 +1,6 @@
 from flask import Flask
 
-from app.core import db, debug_toolbar, ma
+from app.core import db, debug_toolbar, ma, migrate
 from app.helpers import register_blueprints
 
 from app import config
@@ -18,6 +18,8 @@ def create_app(package_name, package_path, settings=None):
         app.config.update(settings)
 
     db.init_app(app)
+
+    migrate.init_app(app, db)
 
     ma.init_app(app)
 

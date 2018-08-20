@@ -15,13 +15,11 @@ COPY Pipfile Pipfile.lock /app/
 RUN set -ex
 RUN pipenv install --python 3.6 --system --deploy
 
+# Copy over main files
 COPY tests/ app/ .env manage.py /app/
-
-# Initialize Sqlite3 database
-#RUN flask initdb
 
 # Listen to port 5000 at runtime
 EXPOSE 5000
 
-# Define our command to be run when launching the container
+# Run the flask server @ 0.0.0.0
 CMD flask run --host 0.0.0.0
