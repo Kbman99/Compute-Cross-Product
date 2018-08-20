@@ -74,6 +74,8 @@ $ sudo docker-compose run --rm web flask initdb (Only required on first startup 
 
 # More information
 
+*All commands against a docker service must be run as `docker-compose run [--rm] <service_name> <command>` (--rm to delete the container the command runs in)*
+
 ### Flask CLI
 
 #### `flask initdb`
