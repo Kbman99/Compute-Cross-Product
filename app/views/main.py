@@ -32,14 +32,14 @@ def calculate():
             return jsonify({'error': e}), 500
         final_result, errors = ResultListSchema().dump(result)
         if errors:
-            return jsonify(errors)
+            return jsonify(errors), 400
         return jsonify(final_result)
     else:
         results = ResultList.query.all()
         results_obj = AllResults(results)
         all_results, error = AllResultsListSchema().dump(results_obj)
         if error:
-            return jsonify(error)
+            return jsonify(error), 400
         return jsonify(all_results)
 
 

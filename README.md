@@ -1,8 +1,8 @@
 ﻿# Compute Cross Product SPA
 
-##### This application uses a React SPA front-end served by webpack-dev-server. The back-end is powered by Flask and sqlite3.
+##### This application uses a React SPA front-end served by webpack-dev-server. The back-end is powered by Flask and PostgreSQL.
 
-![](app/static/img/Technologies.png)
+![The tech](app/static/img/Technologies.png)
 
 # Directions
 ### *For Docker CE both applications run on and can be accessed at `0.0.0.0:<port>`, if using Docker-Machine, they will run on the IP provided when running `docker-machine ip <machine_name>`*
@@ -45,7 +45,7 @@
     
     `npm install`
     
-- Run the webpack-dev-server locally (*This runs the server on `127.0.0.1:8080`, but will show as `0.0.0.0:8080` on Windows (on Linux it may very well run on `0.0.0.0:8080`)*)
+- Run the webpack-dev-server locally (*This runs the server on `127.0.0.1:8080`, but will show as `0.0.0.0:8080` on Windows and on Linux it WILL run on `0.0.0.0:8080`*)
 
     `npm run start-local`
 
@@ -71,6 +71,20 @@ $ sudo docker-compose run --rm web flask initdb
 ```
 
 ### If using `docker-machine` you must then access the IP address given by `docker-machine ip <machine_name>` directly from your machine along with the appropriate port to access a given service.
+
+<br>
+
+# Flask CLI Commands
+
+#### `flask initdb`
+- Initialize the database
+#### `flask dropdb`
+- Drop the database
+#### `flask refreshdb`
+- Drop then reinitialize the database
+
+*All database data is persisted through volumes*
+
 
 ## License
 

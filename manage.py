@@ -1,5 +1,4 @@
 from termcolor import colored
-
 import click
 
 from app.core import db
@@ -20,7 +19,7 @@ def initdb():
 @click.confirmation_option(
     prompt='This will erase everything in the database. Do you want to continue?')
 def dropdb():
-    """ Delete the SQL database. """
+    """ Drop the SQL database. """
     db.drop_all()
     print(colored('The SQL database has been deleted', 'green'))
 
@@ -29,7 +28,7 @@ def dropdb():
 @click.confirmation_option(
     prompt='This will remove the current database and fill it with test data. Do you want to continue?')
 def refreshdb():
-    """ Fill db with test data. """
+    """ Drop then reinitialize the database """
     db.drop_all()
     db.create_all()
     print(colored('The SQL database has been recreated!', 'green'))
