@@ -25,7 +25,7 @@ export default class CalculateForm extends React.Component {
     vector1_array = vector1_array.map(Number);
     vector2_array = vector2_array.map(Number);
 
-    axios.post('http://'+ process.env.API_HOST + ':5000/calculate', {
+    axios.post('http://' + process.env.API_HOST + ':5000/calculate', {
       vector1: vector1_array,
       vector2: vector2_array
     })
@@ -39,13 +39,12 @@ export default class CalculateForm extends React.Component {
 
   checkFormat = (array) => {
     const result = array.every(function (item) {
-      return /^\d+$/.test(item);
+      return !isNaN(item);
     });
     return result;
   };
 
   validate = _debounce((value, ctx, input, cb) => {
-    clearTimeout(this.timeout);
 
     let raw_array = value.split(',');
 
@@ -54,11 +53,8 @@ export default class CalculateForm extends React.Component {
     }
 
     let clean_array = raw_array.map(c => c.trim());
-
-    this.timeout = setTimeout(() => {
-      cb(this.checkFormat(clean_array));
-    }, 10);
-  }, 10);
+    cb(this.checkFormat(clean_array));
+  }, 200);
 
   render() {
     return (
@@ -66,11 +62,13 @@ export default class CalculateForm extends React.Component {
         <AvForm onValidSubmit={this.handleValidSubmit}>
           <Row>
             <Col sm={{size: 'auto', offset: 2}}>
-              <AvField label="Vector 1" value={this.state.vector1} type="text" name="vector1" id="vector1" placeholder="1, 2, 3"
+              <AvField label="Vector 1" value={this.state.vector1} type="text" name="vector1" id="vector1"
+                       placeholder="1, 2, 3"
                        validate={{async: this.validate}} required/>
             </Col>
             <Col sm={{size: 'auto', offset: 2}}>
-              <AvField label="Vector 2" value={this.state.vector2} type="text" name="vector2" id="vector2" placeholder="4, 5, 6"
+              <AvField label="Vector 2" value={this.state.vector2} type="text" name="vector2" id="vector2"
+                       placeholder="4, 5, 6"
                        validate={{async: this.validate}} required/>
             </Col>
           </Row>
