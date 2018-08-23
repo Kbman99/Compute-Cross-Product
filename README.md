@@ -13,8 +13,7 @@
 #### *P.S. This value defaults is pre-set to `0.0.0.0` so it works out of the box with Docker CE*
 # Setup
 
-##Simple Startup (locally)
- 
+## Simple Startup (locally)
 ### PostgreSQL
 - Run this script using `psql` CLI to setup the database
 ```sh
