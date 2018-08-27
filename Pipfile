@@ -51,5 +51,6 @@ marshmallow-sqlalchemy = "*"
 simplejson = "*"
 sqlalchemy-utils = "*"
 flask-migrate = "*"
+gunicorn = "*"
 
 [dev-packages]

@@ -6,7 +6,8 @@ services:
     build: ./
     env_file: .env
     ports:
-      - "5000:5000"
+      - "8000:8000"
+    command: gunicorn -w 2 -b :8000 app:create_app()
     depends_on:
       - db
 
@@ -28,3 +29,11 @@ services:
       - 5432
     volumes:
       - ./postgres-data/postgres:/var/lib/postgresql/data
+
+  nginx:
+    restart: always
+    build: ./nginx
+    ports:
+    - "80:80"
+    depends_on:
+    - web

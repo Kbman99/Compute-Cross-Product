@@ -25,7 +25,7 @@ export default class CalculateForm extends React.Component {
     vector1_array = vector1_array.map(Number);
     vector2_array = vector2_array.map(Number);
 
-    axios.post('http://' + process.env.API_HOST + ':5000/calculate', {
+    axios.post('http://' + process.env.API_HOST + ':80/calculate', {
       vector1: vector1_array,
       vector2: vector2_array
     })

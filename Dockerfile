@@ -18,8 +18,12 @@ RUN pipenv install --python 3.6 --system --deploy
 # Copy over main files
 COPY setup.cfg setup.py tests/ app/ .env manage.py /app/
 
-# Listen to port 5000 at runtime
-EXPOSE 5000
+# Add project parent directory (app/) so gunicorn sees it as a python module
+ENV PYTHONPATH ${PWD}/..
 
-# Run the flask server @ 0.0.0.0
-CMD flask run --host 0.0.0.0
+# For running on werkzeug flask server
+## Listen to port 5000 at runtime
+#EXPOSE 8000
+#
+## Run the flask server @ 0.0.0.0
+#CMD flask run --host 0.0.0.0
