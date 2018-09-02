@@ -5,6 +5,5 @@
 .pytest_cache
 .pylintrc
 node_modules
-nginx
 __pycache__
 postgres-data
